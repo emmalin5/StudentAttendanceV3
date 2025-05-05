@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+      <!-- Auth Header -->
+      <div class="flex justify-between items-center mb-6">
+        <div id="authButtons">
+          <button
+            id="loginBtn"
+            class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+            Login
+          </button>
+          <button
+            id="logoutBtn"
+            class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 hidden">
+            Logout
+          </button>
+        </div>
+        <h1 class="text-2xl font-bold">Teacher Management</h1>
+        <button
+          id="addTeacherBtn"
+          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 hidden">
+          Add Teacher
+        </button>
+      </div>
+
+      <!-- Teachers Table -->
+      <div
+        id="content"
+        class="bg-white shadow-md rounded-lg overflow-hidden hidden">
+        <table id="teachersTable" class="w-full">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="px-4 py-2">Name</th>
+              <th class="px-4 py-2">Employee ID</th>
+              <th class="px-4 py-2">Subjects</th>
+              <th class="px-4 py-2">Classes</th>
+              <th class="px-4 py-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Rows will be populated here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Login Modal -->
+      <div
+        id="loginModal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg p-6 w-11/12 md:w-1/3">
+          <h2 class="text-xl font-bold mb-4">Login</h2>
+
+          <div class="space-y-4">
+            
+              <input type="text" id="employeeId" placeholder="Employee ID" 
+              class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <input type="password" id="password" placeholder="Password" 
+              class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+          <div class="flex justify-end space-x-2 mt-6">
+            <button
+              id="cancelLoginBtn"
+              class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">
+              Cancel
+            </button>
+            <button
+              id="submitLoginBtn"
+              class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Teacher Modal -->
+      <div
+        id="teacherModal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg p-6 w-11/12 md:w-1/2">
+          <h2 class="text-xl font-bold mb-4">Add Teacher</h2>
+
+          <div class="space-y-4">
+            <input
+              type="text"
+              id="teacherName"
+              placeholder="Name"
+              class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+            <input
+              type="text"
+              id="employeeId"
+              placeholder="Employee ID"
+              class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+            <input
+              type="text"
+              id="subjects"
+              placeholder="Subjects (comma separated)"
+              class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+            <input
+              type="text"
+              id="classes"
+              placeholder="Classes (comma separated)"
+              class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+
+          <div class="flex justify-end space-x-2 mt-6">
+            <button
+              id="cancelBtn"
+              class="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400">
+              Cancel
+            </button>
+            <button
+              id="saveBtn"
+              class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        const API_URL = "http://localhost:4000/api/teachers";
+        const TOKEN_KEY = "auth_token";
+        let teachers = [];
+        let currentTeacher = {};
+        let isEditMode = false;
+
+        // Check existing token
+        const token = localStorage.getItem(TOKEN_KEY);
+        if (token) {
+          $("#loginBtn").hide();
+          $("#logoutBtn").show();
+          $("#addTeacherBtn").show();
+          $("#content").show();
+          loadTeachers();
+        }
+
+        // Login button
+        $("#loginBtn").click(function () {
+          $("#loginModal").removeClass("hidden");
+        });
+
+        // Logout button
+        $("#logoutBtn").click(function () {
+          localStorage.removeItem(TOKEN_KEY);
+          location.reload();
+        });
+
+        // Login submit
+        $("#submitLoginBtn").click(function (e) {
+          e.preventDefault();
+          const employeeId = $("#employeeId").val().trim(); // Changed from username
+          const password = $("#password").val().trim(); // Use matching ID
+
+          $.ajax({
+            url: "http://localhost:4000/api/auth/login",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ employeeId, password }), // Match backend parameters
+            success: function (data) {
+              localStorage.setItem(TOKEN_KEY, data.token);
+              location.reload();
+            },
+            error: function (error) {
+              alert(
+                "Login failed: " +
+                  (error.responseJSON?.error || "Unknown error")
+              );
+            },
+          });
+        });
+        // Cancel login
+        $("#cancelLoginBtn").click(function () {
+          $("#loginModal").addClass("hidden");
+        });
+
+        // Add authorization header to all requests
+        $.ajaxSetup({
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem(TOKEN_KEY),
+          },
+        });
+
+        // Load teachers
+        function loadTeachers() {
+          $.ajax({
+            url: API_URL,
+            method: "GET",
+            success: function (data) {
+              teachers = data.map((teacher) => ({
+                ...teacher,
+                subjects: teacher.subjects.map((s) => s._id || s),
+                classes: teacher.classes.map((c) => c._id || c),
+              }));
+              renderTable();
+            },
+            error: function (error) {
+              console.error("Error fetching teachers:", error);
+            },
+          });
+        }
+
+        // Render table
+        function renderTable() {
+          const tbody = $("#teachersTable tbody");
+          tbody.empty();
+
+          teachers.forEach((teacher) => {
+            tbody.append(`
+                        <tr class="border-t">
+                            <td class="px-4 py-2">${teacher.name}</td>
+                            <td class="px-4 py-2">${teacher.employeeId}</td>
+                            <td class="px-4 py-2">${teacher.subjects.join(
+                              ", "
+                            )}</td>
+                            <td class="px-4 py-2">${teacher.classes.join(
+                              ", "
+                            )}</td>
+                            <td class="px-4 py-2 space-x-2">
+                                <button onclick="editTeacher('${teacher._id}')" 
+                                    class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">
+                                    Edit
+                                </button>
+                                <button onclick="deleteTeacher('${
+                                  teacher._id
+                                }')" 
+                                    class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    `);
+          });
+        }
+
+        // Add teacher button
+        $("#addTeacherBtn").click(function () {
+          isEditMode = false;
+          currentTeacher = {};
+          $("#teacherModal h2").text("Add Teacher");
+          $("#teacherModal input").val("");
+          $("#teacherModal").removeClass("hidden");
+        });
+
+        // Save teacher
+        $("#saveBtn").click(function () {
+          const teacherData = {
+            name: $("#teacherName").val(),
+            employeeId: $("#employeeId").val(),
+            password: $("#password").val(),
+            subjects: $("#subjects")
+              .val()
+              .split(",")
+              .map((s) => s.trim()),
+            classes: $("#classes")
+              .val()
+              .split(",")
+              .map((c) => c.trim()),
+          };
+
+          const url = isEditMode ? `${API_URL}/${currentTeacher._id}` : API_URL;
+          const method = isEditMode ? "PUT" : "POST";
+
+          $.ajax({
+            url: url,
+            method: method,
+            contentType: "application/json",
+            data: JSON.stringify(teacherData),
+            success: function (data) {
+              if (isEditMode) {
+                const index = teachers.findIndex((t) => t._id === data._id);
+                teachers[index] = data;
+              } else {
+                teachers.push(data);
+              }
+              $("#teacherModal").addClass("hidden");
+              loadTeachers();
+            },
+            error: function (error) {
+              alert("Error: " + error.responseJSON.error);
+            },
+          });
+        });
+
+        // Cancel teacher modal
+        $("#cancelBtn").click(function () {
+          $("#teacherModal").addClass("hidden");
+        });
+
+        // Edit teacher (global function for onclick)
+        window.editTeacher = function (id) {
+          isEditMode = true;
+          currentTeacher = teachers.find((t) => t._id === id);
+
+          $("#teacherModal h2").text("Edit Teacher");
+          $("#teacherName").val(currentTeacher.name);
+          $("#employeeId").val(currentTeacher.employeeId);
+          $("#password").val("");
+          $("#subjects").val(currentTeacher.subjects.join(", "));
+          $("#classes").val(currentTeacher.classes.join(", "));
+          $("#teacherModal").removeClass("hidden");
+        };
+
+        // Delete teacher (global function for onclick)
+        window.deleteTeacher = function (id) {
+          if (confirm("Are you sure?")) {
+            $.ajax({
+              url: `${API_URL}/${id}`,
+              method: "DELETE",
+              success: function () {
+                teachers = teachers.filter((t) => t._id !== id);
+                loadTeachers();
+              },
+              error: function (error) {
+                alert("Error: " + error.responseJSON.error);
+              },
+            });
+          }
+        };
+
+        // Initial load
+        if (token) loadTeachers();
+      });
+    </script>
+  </body>
+</html>
