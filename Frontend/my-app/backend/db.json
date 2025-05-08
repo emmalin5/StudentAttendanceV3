@@ -1,0 +1,128 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "name": "Alice Johnson"
+    },
+    {
+      "id": "2",
+      "name": "Bob Smith"
+    },
+    {
+      "id": "3",
+      "name": "Charlie Brown"
+    }
+  ],
+  "attendance": [],
+  "collegePeriods": [
+    {
+      "id": "1",
+      "name": "2025-2026 Academic Year",
+      "shortName": "Spring 2025",
+      "startDate": "2025-05-06",
+      "endDate": "2026-03-06",
+      "restingDays": [
+        "Saturday",
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ]
+    },
+    {
+      "id": "202b",
+      "name": "",
+      "shortName": "",
+      "startDate": "",
+      "endDate": "",
+      "restingDays": []
+    },
+    {
+      "id": "bec2",
+      "name": "",
+      "shortName": "",
+      "startDate": "",
+      "endDate": "",
+      "restingDays": []
+    }
+  ],
+  "programs": [
+    {
+      "name": "University Program",
+      "id": "2"
+    },
+    {
+      "id": "62bc",
+      "name": "Yangon University Program"
+    }
+  ],
+  "levels": [
+    {
+      "id": "1",
+      "programId": 1,
+      "name": "Year 1",
+      "shortName": "Y1"
+    },
+    {
+      "id": "2",
+      "programId": 1,
+      "name": "Year 2",
+      "shortName": "Y2"
+    },
+    {
+      "id": "3",
+      "programId": 1,
+      "name": "Year 3",
+      "shortName": "Y3"
+    },
+    {
+      "id": "4",
+      "programId": 1,
+      "name": "Year 4",
+      "shortName": "Y4"
+    },
+    {
+      "id": "5",
+      "programId": 2,
+      "name": "Year 1",
+      "shortName": "Y1"
+    }
+  ],
+  "courses": [
+    {
+      "id": "1",
+      "programId": 1,
+      "levelId": 1,
+      "name": "Introduction to Computer Science",
+      "code": "CS101",
+      "description": "An introductory course on computer science fundamentals.",
+      "teachingHoursPerWeek": 4,
+      "credits": 3,
+      "color": "cyan-400"
+    },
+    {
+      "id": "2",
+      "programId": 1,
+      "levelId": 2,
+      "name": "Advanced Algorithms",
+      "code": "CS201",
+      "description": "A course on advanced algorithm design and analysis.",
+      "teachingHoursPerWeek": 3,
+      "credits": 4,
+      "color": "orange-500"
+    },
+    {
+      "id": "3",
+      "programId": 2,
+      "levelId": 5,
+      "name": "Calculus I",
+      "code": "MATH101",
+      "description": "An introductory course in calculus.",
+      "teachingHoursPerWeek": 5,
+      "credits": 4,
+      "color": "green-500"
+    }
+  ]
+}
