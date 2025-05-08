@@ -28,11 +28,16 @@ const ProgramModal: React.FC<ProgramFormProps> = ({ open, onClose, onSubmit, pro
     }
   };
 
+  const handleCancel = () => {
+    setProgramName('');
+    onClose();
+  };
+
   return (
     <ProgramModalWrapper
       title={program ? 'Edit Program' : 'Create Program'}
       open={open}
-      onClose={onClose}
+      onClose={handleCancel}
       onSubmit={handleSave}
     >
       <TextField

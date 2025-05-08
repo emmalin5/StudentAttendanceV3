@@ -21,6 +21,8 @@ import {
 } from "../services/CirrculumService";
 import ProgramCard from "../components/Cirrculum/ProgramCard";
 import ProgramForm from "../components/Cirrculum/ProgramModal";
+import LevelSection from "../components/Cirrculum/Level/LevelSection";
+import CourseSection from "../components/Cirrculum/Course/CourseSection";
 import type { Program } from "../types/index";
 
 interface TabPanelProps {
@@ -127,7 +129,9 @@ const CurriculumPage: React.FC = () => {
           aria-label="Curriculum tabs"
         >
           <Tab label="Programs" {...a11yProps(0)} />
-          <Tab label="Course Catalog" {...a11yProps(1)} />
+          <Tab label="Levels" {...a11yProps(1)} />
+          <Tab label="Course Catalog" {...a11yProps(2)} />
+
         </Tabs>
       </Box>
 
@@ -148,8 +152,11 @@ const CurriculumPage: React.FC = () => {
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        {/* Future implementation */}
-        Coming soon!
+        <LevelSection />
+      </TabPanel>
+
+      <TabPanel value={value} index={2}>
+       <CourseSection />
       </TabPanel>
 
       <ProgramForm

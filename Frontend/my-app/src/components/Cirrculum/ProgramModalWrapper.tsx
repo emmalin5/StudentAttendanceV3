@@ -28,7 +28,6 @@ const ProgramModalWrapper: React.FC<ProgramModalWrapperProps> = ({
     <DialogActions sx={{ pr: 3, pb: 2 }}>
       <Button onClick={onClose}>Cancel</Button>
      <Button variant="contained" color="primary" onClick={onSubmit}>Save</Button>
-     
     </DialogActions>
   </Dialog>
 );

@@ -4,7 +4,6 @@ import type { RouteObject } from 'react-router-dom';
 import DashboardLayout from '../layouts/DashboardLayout';
 import DashboardHome from '../pages/DashboardHome';
 import CollegePeriodsPage from '../pages/CollegePeriodPage';
-import { Dashboard } from '@mui/icons-material';
 import CurriculumPage from '../pages/CurriculumPage';
 
 const routesConfig: RouteObject[] = [

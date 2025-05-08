@@ -23,9 +23,11 @@ export interface Program {
     color: string;
   }
 
-  export interface Level {
+  export interface CollegePeriod {
     id: number;
-    programId: number;
     name: string;
     shortName: string;
+    startDate: string;
+    endDate: string;
+    restingDays: string[];
   }

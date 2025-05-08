@@ -92,26 +92,14 @@
   ],
   "courses": [
     {
-      "id": "1",
-      "programId": 1,
-      "levelId": 1,
-      "name": "Introduction to Computer Science",
-      "code": "CS101",
-      "description": "An introductory course on computer science fundamentals.",
-      "teachingHoursPerWeek": 4,
-      "credits": 3,
-      "color": "cyan-400"
-    },
-    {
-      "id": "2",
-      "programId": 1,
-      "levelId": 2,
       "name": "Advanced Algorithms",
       "code": "CS201",
       "description": "A course on advanced algorithm design and analysis.",
       "teachingHoursPerWeek": 3,
       "credits": 4,
-      "color": "orange-500"
+      "programId": 2,
+      "levelId": 3,
+      "id": "2"
     },
     {
       "id": "3",
@@ -123,6 +111,16 @@
       "teachingHoursPerWeek": 5,
       "credits": 4,
       "color": "green-500"
+    },
+    {
+      "name": "Advanced Algorithms",
+      "code": "CS201",
+      "description": "A course on advanced algorithm design and analysis.",
+      "teachingHoursPerWeek": 3,
+      "credits": 4,
+      "programId": 1,
+      "levelId": 2,
+      "id": "0921"
     }
   ]
 }
