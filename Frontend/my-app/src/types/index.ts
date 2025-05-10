@@ -31,3 +31,29 @@ export interface Program {
     endDate: string;
     restingDays: string[];
   }
+
+
+  export interface ContactInfo {
+    address: string;
+    city: string;
+    zipCode: string;
+    country: string;
+    telephone1: string;
+    telephone2: string;
+    email: string;
+  }
+  
+  export interface Student {
+    id: string;
+    firstName: string;
+    lastName: string;
+    placeOfBirth: string;
+    dateOfBirth: string;
+    gender: 'Male' | 'Female' | 'Other';
+    idCard: string;
+    socialSecurityNumber: string;
+    status: 'active' | 'inactive';
+    contact: ContactInfo;
+  }
+  
+  

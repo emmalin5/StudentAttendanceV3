@@ -1,16 +1,24 @@
 {
   "students": [
     {
-      "id": "1",
-      "name": "Alice Johnson"
-    },
-    {
       "id": "2",
-      "name": "Bob Smith"
-    },
-    {
-      "id": "3",
-      "name": "Charlie Brown"
+      "firstName": "Bob",
+      "lastName": "Smith",
+      "placeOfBirth": "Los Angeles",
+      "dateOfBirth": "1999-03-08",
+      "gender": "Male",
+      "idCard": "ID87654321",
+      "socialSecurityNumber": "987-65-4321",
+      "status": "inactive",
+      "contact": {
+        "address": "456 Elm Street",
+        "city": "Los Angeles",
+        "zipCode": "90001",
+        "country": "USA",
+        "telephone1": "+1-310-555-1122",
+        "telephone2": "+1-323-555-3344",
+        "email": "bob.smith@example.com"
+      }
     }
   ],
   "attendance": [],
@@ -49,10 +57,6 @@
     }
   ],
   "programs": [
-    {
-      "name": "University Program",
-      "id": "2"
-    },
     {
       "id": "62bc",
       "name": "Yangon University Program"

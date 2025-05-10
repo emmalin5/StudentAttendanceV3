@@ -1,15 +1,13 @@
-// src/layouts/DashboardLayout.tsx
 import React, { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import { Box, AppBar, Toolbar, IconButton, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Sidebar from '../components/Sidebar';
-import { bgcolor } from '@mui/system';
 import '../assets/DashboardLayout.css';
 
 const drawerWidth = 240;
 
-const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  console.log('DashboardLayout component rendered');
+const DashboardLayout = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -53,7 +51,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) 
         }}
       >
         <Toolbar/>
-        {children}
+        <Outlet />
       </Box>
     </Box>
   );

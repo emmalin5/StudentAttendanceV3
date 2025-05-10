@@ -23,6 +23,7 @@ import ProgramCard from "../components/Cirrculum/ProgramCard";
 import ProgramForm from "../components/Cirrculum/ProgramModal";
 import LevelSection from "../components/Cirrculum/Level/LevelSection";
 import CourseSection from "../components/Cirrculum/Course/CourseSection";
+import ProgramSection from "../components/Cirrculum/Program/ProgramSection";
 import type { Program } from "../types/index";
 
 interface TabPanelProps {
@@ -136,7 +137,7 @@ const CurriculumPage: React.FC = () => {
       </Box>
 
       <TabPanel value={value} index={0}>
-        <Button variant="contained" sx={{ mb: 3 }} onClick={openCreateModal}>
+        {/* <Button variant="contained" sx={{ mb: 3 }} onClick={openCreateModal}>
           + Create Program
         </Button>
         <Paper elevation={3} sx={{ p: 2 }}>
@@ -148,7 +149,8 @@ const CurriculumPage: React.FC = () => {
               onDelete={confirmDelete}
             />
           ))}
-        </Paper>
+        </Paper> */}
+        <ProgramSection />
       </TabPanel>
 
       <TabPanel value={value} index={1}>

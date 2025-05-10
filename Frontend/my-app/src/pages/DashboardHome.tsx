@@ -51,7 +51,7 @@ const DashboardHome: FC = () => {
           <Typography variant="h5" gutterBottom>
             Welcome, Admin!
           </Typography>
-          <Typography paragraph>
+          <Typography>
             You're all caught up on your tasks. Here's what’s happening today.
           </Typography>
         </Paper>

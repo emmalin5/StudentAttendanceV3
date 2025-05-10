@@ -5,16 +5,24 @@ import DashboardLayout from '../layouts/DashboardLayout';
 import DashboardHome from '../pages/DashboardHome';
 import CollegePeriodsPage from '../pages/CollegePeriodPage';
 import CurriculumPage from '../pages/CurriculumPage';
-
+import StudentDetail from '../components/Student/StudentDetail';
+import StudentPage from '../pages/StudentPage';
+import { Home } from '@mui/icons-material';
 const routesConfig: RouteObject[] = [
   {
     path: '/',
-    element: <DashboardLayout children={<CurriculumPage />} />,
+    element: <DashboardLayout />,
     children: [
       { index: true, element: <DashboardHome /> },
       { path: 'calendar', element: <div>Calendar Page</div> },
       { path: 'classes', element: <div>Classes Page</div> },
-      { path: 'students', element: <div>Students Page</div> },
+      {
+        path: 'students',
+        children: [
+          { index: true, element: <StudentPage /> },
+          { path: ':id', element: <StudentDetail /> },
+        ]
+      },
       { path: 'professors', element: <div>Professors Page</div> },
       { path: 'attendance', element: <div>Attendance Page</div> },
       { path: 'grading', element: <div>Grading Page</div> },
