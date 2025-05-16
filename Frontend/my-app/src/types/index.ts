@@ -56,4 +56,23 @@ export interface Program {
     contact: ContactInfo;
   }
   
+
   
+  export interface Schedule {
+    days: string[]; // Array of days, e.g., ["Tuesday", "Thursday"]
+    startTime: string; // e.g., "10:00 AM"
+    endTime: string; // e.g., "12:00 PM"
+    location: string; // e.g., "Room A101"
+}
+
+export interface UniversityClass {
+    id: string;
+    name: string;
+    programId: string;  
+    levelId: string;    
+    courseId: string;   
+    collegePeriodId: string; 
+    registeredStudentIds: string[];
+    schedule: Schedule;
+}
+

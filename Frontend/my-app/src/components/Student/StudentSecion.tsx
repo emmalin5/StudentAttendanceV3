@@ -1,7 +1,19 @@
-// src/components/Curriculum/Student/StudentSection.tsx
 import React, { useEffect, useState } from "react";
-import { Box, Button, Dialog, DialogTitle, DialogContent, DialogActions } from "@mui/material";
-import { fetchStudents, createStudent, updateStudent, deleteStudent } from "../../services/StudentService";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+} from "@mui/material";
+import {
+  fetchStudents,
+  createStudent,
+  updateStudent,
+  deleteStudent,
+} from "../../services/StudentService";
 import StudentForm from "./StudentForm";
 import StudentTable from "./StudentTable";
 import type { Student } from "../../types";
@@ -12,6 +24,7 @@ const StudentSection: React.FC = () => {
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const [studentToDelete, setStudentToDelete] = useState<Student | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const load = async () => {
@@ -60,23 +73,29 @@ const StudentSection: React.FC = () => {
     }
   };
 
+  // Filter students by search query
+  const filteredStudents = students.filter((s) =>
+    `${s.firstName} ${s.lastName} ${s.idCard} ${s.placeOfBirth}`
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase())
+  );
+
   return (
     <Box>
-      <Button variant="contained" sx={{ mb: 2 }} onClick={openCreateModal}>
-        + Create Student
-      </Button>
-      {/* <Paper sx={{ p: 2 }}>
-        {students.map((student) => (
-          <StudentCard
-            key={student.id}
-            student={student}
-            onEdit={openEditModal}
-            onDelete={confirmDelete}
-          />
-        ))}
-      </Paper> */}
-       <StudentTable students={students} onEdit={openEditModal} onDelete={confirmDelete} />
+      <Box display="flex" justifyContent="space-between" mb={2}>
+        <Button variant="contained" onClick={openCreateModal}>
+          + Create Student
+        </Button>
+        <TextField
+          label="Search"
+          variant="outlined"
+          size="small"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </Box>
 
+      <StudentTable students={filteredStudents} onEdit={openEditModal} onDelete={confirmDelete} />
 
       <StudentForm
         open={openModal}
@@ -88,7 +107,11 @@ const StudentSection: React.FC = () => {
       <Dialog open={deleteConfirm} onClose={() => setDeleteConfirm(false)}>
         <DialogTitle>Delete Student</DialogTitle>
         <DialogContent>
-          Are you sure you want to delete <strong>{studentToDelete?.firstName} {studentToDelete?.lastName}</strong>?
+          Are you sure you want to delete{" "}
+          <strong>
+            {studentToDelete?.firstName} {studentToDelete?.lastName}
+          </strong>
+          ?
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setDeleteConfirm(false)}>Cancel</Button>
@@ -102,3 +125,5 @@ const StudentSection: React.FC = () => {
 };
 
 export default StudentSection;
+
+

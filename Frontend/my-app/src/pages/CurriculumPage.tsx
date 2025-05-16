@@ -137,19 +137,6 @@ const CurriculumPage: React.FC = () => {
       </Box>
 
       <TabPanel value={value} index={0}>
-        {/* <Button variant="contained" sx={{ mb: 3 }} onClick={openCreateModal}>
-          + Create Program
-        </Button>
-        <Paper elevation={3} sx={{ p: 2 }}>
-          {programs.map((program) => (
-            <ProgramCard
-              key={program.id}
-              program={program}
-              onEdit={openEditModal}
-              onDelete={confirmDelete}
-            />
-          ))}
-        </Paper> */}
         <ProgramSection />
       </TabPanel>
 

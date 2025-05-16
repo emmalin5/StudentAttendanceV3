@@ -1,14 +1,16 @@
 // src/pages/StudentPage.tsx
 import React from "react";
 import StudentSection from "../components/Student/StudentSecion";
+import { Box } from "@mui/system";
+import { Typography } from "@mui/material";
 
 const StudentPage: React.FC = () => {
     console.log("StudentPage Render");
   return (
-    <div>
-      <h1>Student Management</h1>
+    <Box>
+        <Typography variant="h4" gutterBottom>Students Management</Typography>
       <StudentSection />
-    </div>
+    </Box>
   );
 };
 

@@ -82,14 +82,18 @@ const StudentForm: React.FC<StudentFormProps> = ({ open, onClose, onSubmit, stud
           onChange={(e) => setPlaceOfBirth(e.target.value)}
           sx={{ mb: 2 }}
         />
-        <TextField
-          label="Date of Birth"
-          fullWidth
-          type="date"
-          value={dateOfBirth}
-          onChange={(e) => setDateOfBirth(e.target.value)}
-          sx={{ mb: 2 }}
-        />
+        <FormControl fullWidth sx={{ mb: 2 }}>
+  <TextField
+    label="Date of Birth"
+    type="date"
+    value={dateOfBirth}
+    onChange={(e) => setDateOfBirth(e.target.value)}
+    InputLabelProps={{
+      shrink: true, // This keeps the label visible above the date
+    }}
+    sx={{ background: "white" }}
+  />
+</FormControl>
         <FormControl fullWidth sx={{ mb: 2 }}>
           <InputLabel>Gender</InputLabel>
           <Select
@@ -128,7 +132,7 @@ const StudentForm: React.FC<StudentFormProps> = ({ open, onClose, onSubmit, stud
           </Select>
         </FormControl>
       </DialogContent>
-      <DialogActions>
+      <DialogActions sx={{ pr: 3, pb: 2 }}>
         <Button onClick={onClose}>Cancel</Button>
         <Button onClick={handleSubmit} variant="contained" color="primary">
           {student ? "Update" : "Create"}
