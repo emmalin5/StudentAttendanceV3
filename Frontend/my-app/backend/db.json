@@ -1,0 +1,323 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "firstName": "Alice",
+      "lastName": "Johnson",
+      "placeOfBirth": "New York",
+      "dateOfBirth": "2000-05-15",
+      "gender": "Female",
+      "idCard": "ID12345678",
+      "socialSecurityNumber": "123-45-6789",
+      "status": "inactive",
+      "contact": {}
+    },
+    {
+      "id": "2",
+      "firstName": "Bob",
+      "lastName": "Smith",
+      "placeOfBirth": "Los Angeles",
+      "dateOfBirth": "1999-03-08",
+      "gender": "Male",
+      "idCard": "ID87654321",
+      "socialSecurityNumber": "987-65-4321",
+      "status": "inactive",
+      "contact": {
+        "address": "456 Elm Street",
+        "city": "Los Angeles",
+        "zipCode": "90001",
+        "country": "USA",
+        "telephone1": "+1-310-555-1122",
+        "telephone2": "+1-323-555-3344",
+        "email": "bob.smith@example.com"
+      }
+    },
+    {
+      "id": "3",
+      "firstName": "Carlos",
+      "lastName": "Martinez",
+      "placeOfBirth": "Miami",
+      "dateOfBirth": "2001-07-22",
+      "gender": "Male",
+      "idCard": "ID54321678",
+      "socialSecurityNumber": "321-54-6789",
+      "status": "active",
+      "contact": {
+        "address": "789 Pine Road",
+        "city": "Miami",
+        "zipCode": "33101",
+        "country": "USA",
+        "telephone1": "+1-305-555-9876",
+        "telephone2": "+1-786-555-4321",
+        "email": "carlos.martinez@example.com"
+      }
+    },
+    {
+      "id": "4",
+      "firstName": "Diana",
+      "lastName": "Brown",
+      "placeOfBirth": "Chicago",
+      "dateOfBirth": "2002-11-30",
+      "gender": "Female",
+      "idCard": "ID56781234",
+      "socialSecurityNumber": "567-89-1234",
+      "status": "inactive",
+      "contact": {
+        "address": "321 Oak Street",
+        "city": "Chicago",
+        "zipCode": "60601",
+        "country": "USA",
+        "telephone1": "+1-312-555-3344",
+        "telephone2": "+1-773-555-6677",
+        "email": "diana.brown@example.com"
+      }
+    },
+    {
+      "id": "5",
+      "firstName": "Ethan",
+      "lastName": "Davis",
+      "placeOfBirth": "Dallas",
+      "dateOfBirth": "1998-01-18",
+      "gender": "Male",
+      "idCard": "ID67892345",
+      "socialSecurityNumber": "678-90-2345",
+      "status": "active",
+      "contact": {
+        "address": "654 Cedar Lane",
+        "city": "Dallas",
+        "zipCode": "75201",
+        "country": "USA",
+        "telephone1": "+1-214-555-9988",
+        "telephone2": "+1-469-555-2211",
+        "email": "ethan.davis@example.com"
+      }
+    },
+    {
+      "id": "6",
+      "firstName": "Fiona",
+      "lastName": "Clark",
+      "placeOfBirth": "Seattle",
+      "dateOfBirth": "2000-06-10",
+      "gender": "Female",
+      "idCard": "ID34567812",
+      "socialSecurityNumber": "345-67-8912",
+      "status": "active",
+      "contact": {
+        "address": "987 Willow Drive",
+        "city": "Seattle",
+        "zipCode": "98101",
+        "country": "USA",
+        "telephone1": "+1-206-555-3344",
+        "telephone2": "+1-425-555-9988",
+        "email": "fiona.clark@example.com"
+      }
+    },
+    {
+      "id": "7",
+      "firstName": "George",
+      "lastName": "Lopez",
+      "placeOfBirth": "Houston",
+      "dateOfBirth": "1997-12-05",
+      "gender": "Male",
+      "idCard": "ID23451234",
+      "socialSecurityNumber": "234-51-2345",
+      "status": "inactive",
+      "contact": {
+        "address": "222 Ash Avenue",
+        "city": "Houston",
+        "zipCode": "77001",
+        "country": "USA",
+        "telephone1": "+1-713-555-4466",
+        "telephone2": "+1-832-555-7788",
+        "email": "george.lopez@example.com"
+      }
+    },
+    {
+      "id": "8",
+      "firstName": "Hannah",
+      "lastName": "Evans",
+      "placeOfBirth": "Boston",
+      "dateOfBirth": "2001-09-14",
+      "gender": "Female",
+      "idCard": "ID99887766",
+      "socialSecurityNumber": "998-87-7665",
+      "status": "active",
+      "contact": {
+        "address": "111 Spruce Blvd",
+        "city": "Boston",
+        "zipCode": "02108",
+        "country": "USA",
+        "telephone1": "+1-617-555-9988",
+        "telephone2": "+1-857-555-1122",
+        "email": "hannah.evans@example.com"
+      }
+    },
+    {
+      "id": "9",
+      "firstName": "Isaac",
+      "lastName": "Green",
+      "placeOfBirth": "Phoenix",
+      "dateOfBirth": "1996-02-28",
+      "gender": "Male",
+      "idCard": "ID44556677",
+      "socialSecurityNumber": "445-56-6778",
+      "status": "inactive",
+      "contact": {
+        "address": "300 Birch Street",
+        "city": "Phoenix",
+        "zipCode": "85001",
+        "country": "USA",
+        "telephone1": "+1-602-555-3344",
+        "telephone2": "+1-480-555-2211",
+        "email": "isaac.green@example.com"
+      }
+    },
+    {
+      "id": "10",
+      "firstName": "Julia",
+      "lastName": "Hall",
+      "placeOfBirth": "San Diego",
+      "dateOfBirth": "2003-04-12",
+      "gender": "Female",
+      "idCard": "ID77665544",
+      "socialSecurityNumber": "776-65-5443",
+      "status": "active",
+      "contact": {
+        "address": "999 Cherry Street",
+        "city": "San Diego",
+        "zipCode": "92101",
+        "country": "USA",
+        "telephone1": "+1-619-555-9988",
+        "telephone2": "+1-858-555-3344",
+        "email": "julia.hall@example.com"
+      }
+    }
+  ],
+  "attendance": [],
+  "collegePeriods": [
+    {
+      "id": "1",
+      "name": "2025-2026 Academic Year",
+      "shortName": "Spring 2025",
+      "startDate": "2025-05-06",
+      "endDate": "2026-03-06",
+      "restingDays": [
+        "Saturday",
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ]
+    },
+    {
+      "id": "922a",
+      "name": "Eperiod",
+      "shortName": "EEP",
+      "startDate": "2025-05-19",
+      "endDate": "2025-05-08",
+      "restingDays": [
+        "Tuesday"
+      ]
+    },
+    {
+      "id": "922a",
+      "name": "Eperiod",
+      "shortName": "EEP",
+      "startDate": "2025-05-19",
+      "endDate": "2025-05-08",
+      "restingDays": [
+        "Tuesday",
+        "Wednesday"
+      ]
+    }
+  ],
+  "programs": [
+    {
+      "id": "62bc",
+      "name": "Yangon University Program"
+    }
+  ],
+  "levels": [
+    {
+      "id": "1",
+      "name": "Year 1",
+      "shortName": "Y1"
+    },
+    {
+      "id": "2",
+      "name": "Year 2",
+      "shortName": "Y2"
+    },
+    {
+      "id": "3",
+      "name": "Year 3",
+      "shortName": "Y3"
+    },
+    {
+      "id": "4",
+      "name": "Year 4",
+      "shortName": "Y4"
+    },
+    {
+      "id": "5",
+      "name": "Year 5",
+      "shortName": "Y5"
+    }
+  ],
+  "courses": [
+    {
+      "id": "1",
+      "name": "Advanced Algorithms",
+      "code": "CS201",
+      "description": "A course on advanced algorithm design and analysis.",
+      "teachingHoursPerWeek": 3,
+      "credits": 4,
+      "programId": 2,
+      "levelId": 3
+    },
+    {
+      "id": "2",
+      "programId": 2,
+      "levelId": 5,
+      "name": "Calculus I",
+      "code": "MATH101",
+      "description": "An introductory course in calculus.",
+      "teachingHoursPerWeek": 5,
+      "credits": 4
+    },
+    {
+      "id": "3",
+      "name": "Advanced Algorithms",
+      "code": "CS201",
+      "description": "A course on advanced algorithm design and analysis.",
+      "teachingHoursPerWeek": 3,
+      "credits": 4,
+      "programId": 1,
+      "levelId": 2
+    }
+  ],
+  "universityClasses": [
+    {
+      "id": "1747295888210",
+      "name": "Y2-Spring Semster",
+      "programId": "",
+      "levelId": "",
+      "courseId": "1",
+      "collegePeriodId": "1",
+      "registeredStudentIds": [],
+      "schedule": {
+        "days": [
+          "Tuesday",
+          "Monday",
+          "Wednesday",
+          "Thursday"
+        ],
+        "startTime": "10:00",
+        "endTime": "12:00",
+        "location": "Room 356"
+      }
+    }
+  ]
+}

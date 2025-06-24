@@ -1,0 +1,41 @@
+/* src/layouts/DashboardLayout.css */
+.dashboard-layout {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .app-bar {
+    background-color: #1976d2; /* Change to your preferred color */
+    z-index: 1300; /* Ensure the AppBar stays above the Sidebar */
+  }
+  
+  .app-bar-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: white;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+    width: calc(100% - 240px);
+    margin-left: 240px;
+    transition: margin-left 0.3s ease-in-out;
+  }
+  
+  .main-content .MuiToolbar-root {
+    margin-top: 10px;
+  }
+  
+  @media (max-width: 600px) {
+    .main-content {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+  
+  .MuiAppBar-root {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow effect */
+  }
+  
